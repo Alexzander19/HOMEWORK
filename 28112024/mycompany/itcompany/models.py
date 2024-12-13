@@ -8,3 +8,11 @@ class Services(models.Model):
     price = models.IntegerField()
     date_create = models.DateField(auto_now_add=True)
     pict = models.ImageField(upload_to='static/images')
+
+#  Обратная связь. Возможность оставить запрос на конкретную услугу
+class Interested(models.Model):
+    service = models.ForeignKey(Services,on_delete=models.DO_NOTHING)
+    name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=20)
+    request = models.TextField()
+    date_time_create = models.DateTimeField(auto_now_add=True)
