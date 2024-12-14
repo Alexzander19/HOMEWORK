@@ -1,3 +1,3 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Страница загружена');
+    console.log('Страница загружена! CSS работает!');
 });
