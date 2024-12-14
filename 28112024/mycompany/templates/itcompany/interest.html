@@ -1,0 +1,19 @@
+{% extends 'itcompany/base.html' %}
+
+{% block content %}
+
+<h2> Подробное описание услуги</h2>
+
+<h3>{{service.name}}</h3>
+<h4>{{service.about}}</h4>
+<h5>{{service.price}}</h5>
+
+<form action = "{% url 'interest' service.id %}" method="post" >
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button name="submit"> Отправить запрос </button>
+
+
+{% endblock content %}

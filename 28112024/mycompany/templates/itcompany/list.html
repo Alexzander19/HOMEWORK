@@ -1,0 +1,20 @@
+{% extends 'itcompany\base.html' %}
+
+{% block title %}Список услуг{% endblock %}
+
+{% block content %}
+
+    <ul> 
+        {% for service in services%}
+
+            <li> <a href = "{%url 'interest' service.id %}"><img class = 'img-list' src = {{service.pict.url}}> {{service}} </a></li>
+            <br> 
+            <br>
+
+        {% endfor %}
+
+
+    </ul>
+
+
+{% endblock %}

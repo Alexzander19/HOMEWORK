@@ -1,0 +1,13 @@
+{% extends 'itcompany\base.html' %}
+
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+    <h2>Добро пожаловать на сайт Маленкой да Удаленькой IT компании!</h2>
+    <p> <a href ="/list" >Здесь вы найдете перечень наших скромных услуг.</a></p>
+{% endblock %}
