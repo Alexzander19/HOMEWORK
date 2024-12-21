@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Список сеансов</h1>
+  <p class="mb-5 text-body-secondary">Каждый  может участвовать в просмотре любого фильма, но за деньги</p>
+  <div class="row ">
+    {% for session in sessions %}
+      <div class="col-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ session }}</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">{{session.price}}</h6>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Еще нет назначенных сеансов</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">Если вы смотрите один, то вы либо красавчик, либо сверхчеловек</h6>
+            <p class="card-text">К Каждому фильму требуется ответственный за ПИВО, иначе зритель просто уснет</p>
+            <a href="#" class="card-link">Назначить мальчишку</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

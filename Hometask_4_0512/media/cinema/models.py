@@ -17,6 +17,9 @@ class Movie(models.Model):
     genre = models.CharField(max_length=50)
     release_date = models.DateField()
 
+    def __str__(self):
+        return self.title[0:20] +', ' + self.genre[0:20] + ', '+ str(self.duration) + 'мин.'
+
 
 
 # Модель Hall (Зал):
@@ -29,6 +32,9 @@ class Hall(models.Model):
     name = models.CharField(max_length=50)
     capacity = models.IntegerField()
 
+    def __str__(self):
+        return self.name[0:10]
+
 # Модель Session (Сеанс):
 # Поля:
 # movie (фильм).
@@ -40,4 +46,7 @@ class Session(models.Model):
     hall = models.ForeignKey(Hall,on_delete=models.DO_NOTHING)
     show_time = models.TimeField()
     price = models.IntegerField()
+
+    def __str__(self):
+        return str(self.hall) + ', '+ str(self.show_time) + ', '+ str(self.movie)
 
