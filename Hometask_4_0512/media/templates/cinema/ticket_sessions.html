@@ -1,11 +1,8 @@
 {% extends 'base.html' %}
 
 {% block content %}
-  <h1>НАШ ДОМАШНИЙ КИНОТЕАТР</h1>
-  <p class="mb-5 text-body-secondary">В современном мире, где проекты становятся всё более сложными и многозадачными, 
-    использование системы управления КИНОТЕАТРОМ становится необходимостью для успешного выполнения задач. Она 
-    помогает командам эффективно ОТДОХНУТЬ после работы над проектами, восстановить ресурсы и впредь достигать поставленне 
-    цели в  установленные сроки.
+  <h1>НАШ ДОМАШНИЙ КИНОТЕАТР КОШЕЛЕК</h1>
+  <p class="mb-5 text-body-secondary">ИТАК, СЕГОДНЯ ПРОДАНО БИЛЕТОВ
   </p>
   <h1>Список сеансов</h1>
   <p class="mb-5 text-body-secondary">Каждый  может участвовать в просмотре любого фильма, но за деньги</p>
@@ -17,9 +14,9 @@
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">ФИЛЬМ: {{session.movie.title}}</h5>
-            <h6 class="card-subtitle mb-2 text-body-secondary">ЗАЛ: <a href ="{% url 'in_hall' session.hall_id %}" >{{session.hall.name}} </a>Начало: {{session.show_time}}</h6>
+            <h6 class="card-subtitle mb-2 text-body-secondary">ЗАЛ: {{session.hall.name}} Начало: {{session.show_time}}</h6>
             <p class="card-text">{{session.movie.description}}</p>
-            <a href="#" class="card-link">Купить билет</a>
+            <p> куплено {{tickets_num.pop}} билетов. На сумму {{sale_amount.pop}} рублей</p>
           </div>
         </div>
       </div>

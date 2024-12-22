@@ -16,6 +16,7 @@ class Movie(models.Model):
     duration = models.IntegerField()
     genre = models.CharField(max_length=50)
     release_date = models.DateField()
+    description = models.TextField()
 
     def __str__(self):
         return self.title[0:20] +', ' + self.genre[0:20] + ', '+ str(self.duration) + 'мин.'
@@ -50,3 +51,9 @@ class Session(models.Model):
     def __str__(self):
         return str(self.hall) + ', '+ str(self.show_time) + ', '+ str(self.movie)
 
+# Бронирование: информация о том, кто и на какой сеанс забронировал билеты.
+# В админке подключать не будем. Так как для заполнения нужны свободные места в зале
+
+class Ticket(models.Model):
+    session = models.ForeignKey(Session,on_delete=models.DO_NOTHING)
+    purchase_date_time = models.DateTimeField(auto_now_add=True)

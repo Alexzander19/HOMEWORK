@@ -2,44 +2,82 @@
 
 {% block content %}
   <h1>НАШ ДОМАШНИЙ КИНОТЕАТР</h1>
-  <p class="mb-5 text-body-secondary">В современном мире, где проекты становятся всё более сложными и многозадачными, 
-      использование системы управления КИНОТЕАТРОМ становится необходимостью для успешного выполнения задач. Она 
-      помогает командам эффективно ОТДОХНУТЬ после работы над проектами, восстановить ресурсы и впредь достигать поставленне 
-      цели в  установленные сроки.
-  </p>
+  <p class="mb-5 text-body-secondary">Панель администратора </p>
   <div class="row flex-column gap-4 align-items-center">
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Создайте проект</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">Позволит проще управлять</h6>
-          <p class="card-text">Проект должен нести определенный смысл, в него будут добавляться задачи, все структурировано</p>
-          <a href="#" class="card-link">Создать проект</a>
+          <h5 class="card-title">Добавление фильма</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Позволит что-то посмотреть</h6>
+          <p class="card-text">ФИЛЬМ должен нести определенный смысл</p>
+          <a href="#" class="card-link">Добавить фильм</a>
         </div>
       </div>
     </div>
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Создайте исполнителей проекта</h5>
+          <h5 class="card-title">Уютный зал</h5>
           <h6 class="card-subtitle mb-2 text-body-secondary">Разделяй и управляй</h6>
-          <p class="card-text">Каждой задаче требуется ответственный исполнитель, иначе она просто не будет выполняться</p>
-          <a href="#" class="card-link">Создать исполнителя</a>
+          <p class="card-text">Каждому  фильму требуется комфортный зал с креслами, иначе он просто не будет смотреться</p>
+          <a href="#" class="card-link">Создать зал</a>
         </div>
       </div>
     </div>
     <div class="col-12">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Создайте задачи для проекта</h5>
-          <h6 class="card-subtitle mb-2 text-body-secondary">Декомпозируйте что-то большое</h6>
-          <p class="card-text">Всем известно, что слона проще есть по частям</p>
-          <a href="#" class="card-link">Создать задачу</a>
+          <h5 class="card-title">Создание сеанса</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Соедените зал и фильм во времени</h6>
+          <p class="card-text">Всем известно, что слона проще есть по частям, а лучше пускай живет</p>
+          <a href="#" class="card-link">Создать сеанс</a>
         </div>
       </div>
     </div>
     <div class="col-12">
-      <a href="#">Взглянуть на проекты</a>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">А говорят не в деньгах счастье</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">Но как же проще быть счастливым при их наличии</h6>
+          <p class="card-text">Так давайте посмотрим, сколько мы сегодня заработали</p>
+          <a href="{% url 'tickets_sold' %}" class="card-link">Сколько продано билетов на каждый сеанс</a>
+        </div>
+      </div>
     </div>
+
   </div>
+
+
+<!-- Это просто посмотреть, как работает bootstrap -->
+  <!-- On tables -->
+<table class="table-primary">Это просто посмотреть, как работает bootstrap</table>
+<table class="table-secondary">...</table>
+<table class="table-success">...</table>
+<table class="table-danger">...</table>
+<table class="table-warning">...</table>
+<table class="table-info">...</table>
+<table class="table-light">...</table>
+<table class="table-dark">...</table>
+
+<!-- On rows -->
+<tr class="table-primary">...</tr>
+<tr class="table-secondary">...</tr>
+<tr class="table-success">...</tr>
+<tr class="table-danger">...</tr>
+<tr class="table-warning">...</tr>
+<tr class="table-info">...</tr>
+<tr class="table-light">...</tr>
+<tr class="table-dark">...</tr>
+
+<!-- On cells (`td` or `th`) -->
+<tr>
+  <td class="table-primary">...</td>
+  <td class="table-secondary">...</td>
+  <td class="table-success">...</td>
+  <td class="table-danger">...</td>
+  <td class="table-warning">...</td>
+  <td class="table-info">...</td>
+  <td class="table-light">...</td>
+  <td class="table-dark">...</td>
+</tr>
 {% endblock %}

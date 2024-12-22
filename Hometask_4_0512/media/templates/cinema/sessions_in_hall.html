@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1> Вы вошли в зал: {{ hall_name}}</h1>
+  <p class="text-body-secondary"> Вместимсоть зала: {{ sessions.0.hall.capacity }} мест</p> 
+  <!-- <p class="mb-5 text-body-secondary"> {{ sessions}}</p> -->
+
+  <div class="row gap-3">
+    <h2>Список сеансов</h2>
+    {% for session in sessions%}
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{sesssion}}</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">{{session}}</h6>
+            <pre class="card-text"> О фильме: {{session.movie.description}}</pre>
+            {% if free_seat.pop %}
+            <a href="{% url 'by_ticket' session.id %}" class="card-link">купить билет</a> <p> куплено {{tickets_num.pop}} билетов</p>
+            {% else %}
+            <p  class="card-link">Билетов нет </p> <p> куплено {{tickets_num.pop}} билетов</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Еще нет фильмов</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">Смотрю вы любите отдыхать...</h6>
+            <p class="card-text">Всем известно, что слона проще есть по частям</p>
+            <a href="https://krsk.kinoluch.ru/" class="card-link">Пойти в настоящее кино</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
