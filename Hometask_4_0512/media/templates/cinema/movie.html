@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="col-12">
+    <div class="card">
+        <h1> Подробнее о фильме: {{ movie.title }}</h1>
+        <p class="text-body-secondary"> Жанр: {{ movie.genre }} </p> 
+        <!-- <p class="mb-5 text-body-secondary"> {{ sessions}}</p> -->
+        <pre class="card-text"> О фильме: {{movie.description}}</pre>
+        <p class="card-text"> Дата выхода: {{movie.release_date}}</p>
+        <p class="card-text"> Продолжительность: {{movie.duration}} минут</p>
+        <a href="{% url 'edit_movie' movie.id %}">ИЗМЕНИТЬ ФИЛЬМ. должно быть только для АДМИНИСТРАТОРА</a>
+ 
+        <div class="row gap-3">
+            <h2 class = "card-title">Этот фильм можно посмотреть в залах: "</h2>
+            {% for session in sessions%}
+            
+                <div class="card-body">
+                    <h6 class="card-link">ЗАЛ: <a href ="{% url 'in_hall' session.hall_id %}" >{{session.hall.name}} </a>Начало: {{session.show_time}}</h6>
+                    
+                </div>
+        </div>
+
+    </div>
+            {% empty %}
+    <div class="col-12">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Пока нигде не идет</h5>
+            <h6 class="card-subtitle mb-2 text-body-secondary">Смотрю вы любите отдыхать...</h6>
+            <p class="card-text">Всем известно, что слона проще есть по частям,а лучше съешь с друзьями теленка </p>
+            <a href="https://krsk.kinoluch.ru/" class="card-link">Пойти в настоящее кино</a>
+          </div>
+        </div>
+      </div>
+            {% endfor %}
+  </div>
+{% endblock %}

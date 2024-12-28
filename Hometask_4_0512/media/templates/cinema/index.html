@@ -10,7 +10,7 @@
           <h5 class="card-title">Добавление фильма</h5>
           <h6 class="card-subtitle mb-2 text-body-secondary">Позволит что-то посмотреть</h6>
           <p class="card-text">ФИЛЬМ должен нести определенный смысл</p>
-          <a href="#" class="card-link">Добавить фильм</a>
+          <a href="{% url 'add_movie'%}" class="card-link">Добавить фильм</a>
         </div>
       </div>
     </div>
@@ -30,7 +30,7 @@
           <h5 class="card-title">Создание сеанса</h5>
           <h6 class="card-subtitle mb-2 text-body-secondary">Соедените зал и фильм во времени</h6>
           <p class="card-text">Всем известно, что слона проще есть по частям, а лучше пускай живет</p>
-          <a href="#" class="card-link">Создать сеанс</a>
+          <a href="{% url 'add_session' %}" class="card-link">Создать сеанс</a>
         </div>
       </div>
     </div>

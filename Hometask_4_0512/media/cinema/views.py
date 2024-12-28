@@ -1,5 +1,7 @@
 from django.shortcuts import redirect, render
-from .models import Session, Ticket
+
+from .forms import MovieAddForm, SessionAddForm
+from .models import Movie, Session, Ticket
 
 # Create your views here.
 
@@ -51,7 +53,7 @@ def tickets_sold(request):
 
    
     for session in sessions:
-        # здесь было бы уместно сравнить количество бкупленных билетов с вместимостью зала
+        
         num = len(Ticket.objects.filter(session=session))
         tickets_num.append(num)
         sale_amount.append(num * session.price)
@@ -68,3 +70,58 @@ def tickets_sold(request):
     return render(request,'cinema\\ticket_sessions.html',context=context)
 
 
+def add_movie(request):
+    if request.method == "POST":
+        form = MovieAddForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('movie',movie.id)
+    else:
+        form = MovieAddForm()
+  
+    return render(request, 'cinema/add_movie.html', context={'form': form})
+
+def edit_movie(request,id_movie):
+    movie = Movie.objects.get(id=id_movie)
+    if request.method == "POST":
+        form = MovieAddForm(instance=movie, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('movie', movie_id=id_movie)
+    else:
+        form = MovieAddForm(instance=movie)
+    context={'form': form, 'movie': movie}
+    return render(request, 'cinema/edit_movie.html', context=context)
+
+
+def add_session(request):
+    if request.method == "POST":
+        form = SessionAddForm(data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = SessionAddForm()
+
+    return render(request, "cinema/add_session.html", {"form": form})
+
+def edit_session(request,id_session):
+    session = Session.objects.get(id=id_session)
+    if request.method == "POST":
+        form = SessionAddForm(instance=session, data=request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('tickets_sold')
+    else:
+        form = SessionAddForm(instance=session)
+    context={'form': form, 'session': session}
+    return render(request, 'cinema/edit_session.html', context=context)
+
+
+def movie(request,movie_id):
+    movie = Movie.objects.get(id=movie_id)
+    sessions = Session.objects.filter(movie=movie).order_by('show_time')
+    
+    context={'sessions': sessions, 'movie': movie}
+
+    return render(request,'cinema\movie.html',context=context)

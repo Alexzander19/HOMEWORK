@@ -17,6 +17,7 @@
             <h6 class="card-subtitle mb-2 text-body-secondary">ЗАЛ: {{session.hall.name}} Начало: {{session.show_time}}</h6>
             <p class="card-text">{{session.movie.description}}</p>
             <p> куплено {{tickets_num.pop}} билетов. На сумму {{sale_amount.pop}} рублей</p>
+            <a href = "{% url 'edit_session' session.id %}">Редактировать сеанс</a>
           </div>
         </div>
       </div>
