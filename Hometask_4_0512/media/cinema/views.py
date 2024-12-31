@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from django.contrib.auth.decorators import login_required
 
 from .forms import MovieAddForm, SessionAddForm
 from .models import Movie, Session, Ticket
@@ -9,6 +10,7 @@ def sessions(request):
     sessions = Session.objects.all().order_by('show_time')
     return render(request,'cinema\sessions.html',context={'sessions': sessions})
 
+@login_required
 def index(request):
     return render(request,'cinema\index.html')
 
@@ -37,13 +39,16 @@ def sessions_in_hall(request,hall_id):
 
     return render(request,'cinema\sessions_in_hall.html',context=context)
 
+@login_required
 def by_ticket(request,session_id):
 
+
     session = Session.objects.get(id=session_id)
-    ticket = Ticket.objects.create(session=session)
+    ticket = Ticket.objects.create(session=session,user=request.user)
 
     return redirect('in_hall',session.hall_id)
 
+@login_required
 def tickets_sold(request):
     sessions = Session.objects.all().order_by('show_time')
     hall_name = sessions[0].hall.name
@@ -69,7 +74,7 @@ def tickets_sold(request):
     # return render(request,'cinema\ticket_sessions.html',context=context)
     return render(request,'cinema\\ticket_sessions.html',context=context)
 
-
+@login_required
 def add_movie(request):
     if request.method == "POST":
         form = MovieAddForm(request.POST)
@@ -81,6 +86,7 @@ def add_movie(request):
   
     return render(request, 'cinema/add_movie.html', context={'form': form})
 
+@login_required
 def edit_movie(request,id_movie):
     movie = Movie.objects.get(id=id_movie)
     if request.method == "POST":
@@ -93,7 +99,7 @@ def edit_movie(request,id_movie):
     context={'form': form, 'movie': movie}
     return render(request, 'cinema/edit_movie.html', context=context)
 
-
+@login_required
 def add_session(request):
     if request.method == "POST":
         form = SessionAddForm(data=request.POST)
@@ -105,6 +111,7 @@ def add_session(request):
 
     return render(request, "cinema/add_session.html", {"form": form})
 
+@login_required
 def edit_session(request,id_session):
     session = Session.objects.get(id=id_session)
     if request.method == "POST":

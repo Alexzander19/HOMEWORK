@@ -16,6 +16,20 @@ class MovieAddForm(forms.ModelForm):
         # 'placeholder': 'Очень простая задача',
         'required': True
       }),
+
+      'duration': forms.NumberInput(attrs={
+        'class': 'form-control',
+        # 'id': 'floatingTitle',
+        # 'placeholder': 'Очень простая задача',
+        'required': True
+      }),
+
+      'genre': forms.TextInput(attrs={
+        'class': 'form-control',
+        # 'id': 'floatingTitle',
+        # 'placeholder': 'Очень простая задача',
+        'required': True
+      }),
       
       'release_date': forms.DateInput(attrs={
         'class': 'form-control',

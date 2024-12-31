@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 # Create your models here.
 
@@ -57,3 +58,7 @@ class Session(models.Model):
 class Ticket(models.Model):
     session = models.ForeignKey(Session,on_delete=models.DO_NOTHING)
     purchase_date_time = models.DateTimeField(auto_now_add=True)
+    user = models.ForeignKey(User,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return f'зал: {self.session.hall} купил: {self.user.username}'

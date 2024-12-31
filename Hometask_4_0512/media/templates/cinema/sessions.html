@@ -12,18 +12,19 @@
   <div class="row ">
     {% for session in sessions %}
     
-    <div class="row flex-column gap-4 align-items-center">
+    <div class="row flex-column gap-3 align-items-center mb-3">
       <div class="col-12">
         <div class="card">
           <div class="card-body">
             <h5 class="card-title">ФИЛЬМ: {{session.movie.title}}</h5>
-            <h5 class="card-title"> <a href = "{% url 'movie' session.movie_id %}"> ПОДРОБНЕЕ О ФИЛЬМЕ </a></h5>
+            <h5 class="card-title"> <a href = "{% url 'movie' session.movie_id %}"> подробнее о фильме </a></h5>
             <h6 class="card-subtitle mb-2 text-body-secondary">ЗАЛ: <a href ="{% url 'in_hall' session.hall_id %}" >{{session.hall.name}} </a>Начало: {{session.show_time}}</h6>
             <p class="card-text">{{session.movie.description}}</p>
             
           </div>
         </div>
       </div>
+    </div>
 
 
 

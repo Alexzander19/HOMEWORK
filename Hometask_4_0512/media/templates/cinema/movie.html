@@ -9,8 +9,15 @@
         <pre class="card-text"> О фильме: {{movie.description}}</pre>
         <p class="card-text"> Дата выхода: {{movie.release_date}}</p>
         <p class="card-text"> Продолжительность: {{movie.duration}} минут</p>
-        <a href="{% url 'edit_movie' movie.id %}">ИЗМЕНИТЬ ФИЛЬМ. должно быть только для АДМИНИСТРАТОРА</a>
- 
+        
+        <p class="card-text"> 
+          {% if user.username == 'admin' %}
+            <a href="{% url 'edit_movie' movie.id %}">ИЗМЕНИТЬ ФИЛЬМ. (только для администратора)</a>
+          {% else %}
+            <a  href="#">ИЗМЕНИТЬ ФИЛЬМ. (только для администратора)</a>
+          {% endif %}
+        </p>
+
         <div class="row gap-3">
             <h2 class = "card-title">Этот фильм можно посмотреть в залах: "</h2>
             {% for session in sessions%}

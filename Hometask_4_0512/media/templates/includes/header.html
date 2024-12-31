@@ -13,10 +13,29 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Контакты</a>
             </li>
+            
+            {% if user.username == 'admin' %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'index'%}">Администратору</a>
             </li>
+            {% else %}
+              <a class="nav-link" href="#">Администратору</a>
+            {% endif %}
+
+            <li class="nav-item">
+              <a class="nav-link" href="{% url 'signup' %}">Зарегестрироваться</a>
+            </li>
           </ul>
+
+          <div class="ms-auto">
+            {% if user.is_authenticated %}
+                <span class="me-3">{{ user.lastname }} {{ user.firstname }}</span>
+                <a href="{% url 'signout' %}" class="btn btn-dark">Выйти</a>
+            {% else %}
+                <a href="{% url 'signin' %}" class="btn btn-dark">Войти</a>
+            {% endif %}
+          </div>
+
         </div>
       </div>
     </nav>
