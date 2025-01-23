@@ -108,14 +108,18 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+# TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
 USE_TZ = True
 
+LANGUAGE_CODE = 'ru'  # Установите русский язык
+TIME_ZONE = 'Asia/Krasnoyarsk'  # Укажите ваш часовой пояс
+USE_L10N = True  # Локализация форматов даты/времени
+# USE_TZ = True  # Использование часовых поясов
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
